@@ -3,7 +3,6 @@ package com.example.bookmanagementapi.controller;
 import com.example.bookmanagementapi.model.Book;
 import com.example.bookmanagementapi.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

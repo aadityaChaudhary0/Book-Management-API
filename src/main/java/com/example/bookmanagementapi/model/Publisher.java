@@ -2,12 +2,14 @@ package com.example.bookmanagementapi.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Publisher {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long publisherId;
     private String publisherName;
     private String publisherAddress;
@@ -55,4 +57,5 @@ public class Publisher {
     public void setPublisherContact(String publisherContact) {
         this.publisherContact = publisherContact;
     }
+
 }

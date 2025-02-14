@@ -1,9 +1,6 @@
 package com.example.bookmanagementapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -11,6 +8,7 @@ import java.time.LocalDate;
 public class Author {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long authorId;
     private String authorName;
     private String biography;
@@ -58,4 +56,6 @@ public class Author {
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
+
+
 }

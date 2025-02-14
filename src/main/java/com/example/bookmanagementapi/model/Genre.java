@@ -1,12 +1,12 @@
 package com.example.bookmanagementapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Genre {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long genreId;
     private String genreName;
     private String genreDescription;
@@ -44,4 +44,5 @@ public class Genre {
     public void setGenreDescription(String genreDescription) {
         this.genreDescription = genreDescription;
     }
+
 }
