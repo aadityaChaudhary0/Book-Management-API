@@ -15,4 +15,5 @@ public interface BookService {
     public Book updateBook(Long bookId, Book book);
     public Book deleteBook(Long bookId);
 
+    Book assignGenreToBook(Long bookId, Long genreId);
 }

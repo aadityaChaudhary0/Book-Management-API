@@ -1,6 +1,10 @@
 package com.example.bookmanagementapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Genre {
@@ -10,6 +14,10 @@ public class Genre {
     private Long genreId;
     private String genreName;
     private String genreDescription;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "genres")
+    private Set<Book> book = new HashSet<>();
 
     public Genre(Long genreId, String genreName, String genreDescription) {
         this.genreId = genreId;
@@ -45,4 +53,11 @@ public class Genre {
         this.genreDescription = genreDescription;
     }
 
+    public Set<Book> getBook() {
+        return book;
+    }
+
+    public void setBook(Set<Book> book) {
+        this.book = book;
+    }
 }

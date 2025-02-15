@@ -1,7 +1,9 @@
 package com.example.bookmanagementapi.service;
 
 import com.example.bookmanagementapi.model.Book;
+import com.example.bookmanagementapi.model.Genre;
 import com.example.bookmanagementapi.repository.BookRepository;
+import com.example.bookmanagementapi.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ public class BookServiceImplementation implements BookService{
 
     @Autowired
     private BookRepository bookRepository;
+
+    @Autowired
+    private GenreRepository genreRepository;
 
     List<Book> bookList;
 
@@ -60,6 +65,16 @@ public class BookServiceImplementation implements BookService{
             return existingBook.get();
         }
         return null;
+    }
+
+    @Override
+    public Book assignGenreToBook(Long bookId, Long genreId) {
+        Book existingBook = bookRepository.findById(bookId).get();
+        Genre existingGenre = genreRepository.findById(genreId).get();
+
+        existingBook.getGenres().add(existingGenre);
+
+        return bookRepository.save(existingBook);
     }
 
 }

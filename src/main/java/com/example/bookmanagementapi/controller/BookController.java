@@ -1,6 +1,7 @@
 package com.example.bookmanagementapi.controller;
 
 import com.example.bookmanagementapi.model.Book;
+import com.example.bookmanagementapi.model.Genre;
 import com.example.bookmanagementapi.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +43,14 @@ public class BookController {
     @DeleteMapping("/books/{bookId}")
     public Book deleteBook(@PathVariable Long bookId){
         return this.bookService.deleteBook(bookId);
+    }
+
+    @PutMapping("/books/{bookId}/genres/{genreId}")
+    public Book assignGenreToBook(
+            @PathVariable Long bookId,
+            @PathVariable Long genreId
+            ){
+        return bookService.assignGenreToBook(bookId, genreId);
     }
 
 }
